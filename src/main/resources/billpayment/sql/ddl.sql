@@ -17,8 +17,8 @@ CREATE TABLE `billpayment`.`user` (
   `city` VARCHAR(80) NULL,
   `state` VARCHAR(2) NULL,
   `pin_code` VARCHAR(6) NULL,
-  `residence_phone` VARCHAR(10) NULL,
-  `mobile_phone` VARCHAR(10) NULL,
-  `office_phone` VARCHAR(10) NULL,
-  `category` VARCHAR(1) NULL,
+  `residence_phone` VARCHAR(15) NULL,
+  `mobile_phone` VARCHAR(15) NULL,
+  `office_phone` VARCHAR(15) NULL,
+  `category` VARCHAR(2) NULL,
   PRIMARY KEY (`user_id`));

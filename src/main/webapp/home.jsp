@@ -9,7 +9,7 @@
 <body>
 	<table align="center">
 		<tr>
-			<td><a href="login">Login</a></td>
+			<td><a href="loginnew">Login</a></td>
 			<td><a href="registernew">Register</a></td>
 		</tr>
 	</table>

@@ -46,13 +46,34 @@ public class UserDaoImpl extends BaseDaoImpl implements UserDao {
     return users.size() > 0 ? users.get(0) : null;
   }
 
+  public User findUser(String username) {
+
+    String sql = "select * from user where username='" + username +"'";
+
+    List<User> users = jdbcTemplate.query(sql, new UserMapper());
+
+    return users.size() > 0 ? users.get(0) : null;
+  }
+
+  public void updateUser(User user) {
+    String sql = "UPDATE user SET first_name =?, last_name = ? , email = ?, house_no = ?, "
+            + "street = ?, location = ? , city = ? , pin_code = ? , residence_phone = ? , mobile_phone = ? , office_phone = ?  WHERE username = ?";
+    jdbcTemplate.update(sql, user.getFirstName(), user.getLastName(), user.getEmail(), user.getHouseNo(), user.getStreet(),
+           user.getLocation(), user.getCity(), user.getPinCode(), user.getResidencePhone(), user.getMobilePhone(), user.getOfficePhone(), user.getUsername());
+
+  }
+
+  public void updatePassword(String username, String password) {
+    String sql = "UPDATE user SET password = ?  WHERE username = ?";
+    jdbcTemplate.update(sql, password,username);
+  }
 }
 
 class UserMapper implements RowMapper<User> {
 
   public User mapRow(ResultSet rs, int arg1) throws SQLException {
     User user = new User();
-    user.setUserId(rs.getString("userId"));;
+    user.setUserId(rs.getString("user_id"));;
     user.setUsername(rs.getString("username"));
     user.setPassword(rs.getString("password"));
     user.setFirstName(rs.getString("first_name"));

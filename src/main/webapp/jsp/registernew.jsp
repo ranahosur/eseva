@@ -311,7 +311,7 @@
 
   	</script>
 	</head>
-	<body topmargin="0" leftmargin="0" background="../images/background.gif" onLoad= 'window.document.userRegFrm.userIdTxt.focus()'>
+	<body topmargin="0" leftmargin="0" onLoad= 'window.document.userRegFrm.userIdTxt.focus()'>
 	<center>
 	<form:form name="userRegFrm" id="userRegFrm" modelAttribute="user" action="registerProcessNew">
 
@@ -326,7 +326,7 @@
 	      Registration Details</b></font></td>
 	     <td align=right noWrap width="50%" valign="top" height="20" bgColor=#ABDCFC><b><font face="Arial" size="4" color="#C00000">
 		Already Registered&nbsp;</font><font face="Arial" color="#C00000" size="3">
-          <A href="../htmlpages/login.htm">LogIn</a>
+          <A href="loginnew">LogIn</a>
 </font></b></td>
   	  </tr>
 	  </table></center></div></td></tr>
@@ -415,8 +415,8 @@
         	       <tr>
           	          <td width="35%" valign="middle" bgColor=#ABDCFC align="right"><b><font face="Arial" size="2">
 		Email ID&nbsp;<font size="2" face="Arial" color="#FFFFFF">&nbsp;</font></font></b></td>
-          	          <td width="65%" valign="top" bgcolor="#dcdbdb"><input type="text"
-		name="emailTxt" size="30"  autocomplete="off" maxlength=50></td>
+          	          <td width="65%" valign="top" bgcolor="#dcdbdb">
+          	          <form:input path="email" name="email" id="email" size="30"  autocomplete="off" maxlength="50" onblur="return RegexEmail(this);"/></td>
                         </tr>
                         <tr>
           	         <td width="35%" valign="middle" bgColor=#ABDCFC align="right"><b><font  color="#FF0000" face="Arial" size="2">

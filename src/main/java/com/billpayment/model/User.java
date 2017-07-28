@@ -25,6 +25,8 @@ public class User {
   private Date dateOfBirth;
   private String gender;
   private String category;
+  private String newpassTxt;
+  private String repassTxt;
 
 
   public String getUserId() {
@@ -193,5 +195,21 @@ public class User {
 
   public void setCategory(String category) {
     this.category = category;
+  }
+
+  public String getNewpassTxt() {
+    return newpassTxt;
+  }
+
+  public void setNewpassTxt(String newpassTxt) {
+    this.newpassTxt = newpassTxt;
+  }
+
+  public String getRepassTxt() {
+    return repassTxt;
+  }
+
+  public void setRepassTxt(String repassTxt) {
+    this.repassTxt = repassTxt;
   }
 }

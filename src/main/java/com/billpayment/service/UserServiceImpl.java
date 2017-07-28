@@ -30,5 +30,20 @@ public class UserServiceImpl implements UserService {
     return userDao.validateUser(login);
   }
 
+  public User findUser(String username) {
+    logger.debug("Entry into findUser with usename "+username);
+    return userDao.findUser(username);
+  }
 
+  public void modifyUser(User user) {
+    logger.debug("Updating user "+ user.getUsername());
+    userDao.updateUser(user);
+    logger.debug("Updated user "+ user.getUsername());
+  }
+
+  public void updatePassword(String username, String password) {
+    logger.debug("Updating user's password for "+ username);
+    userDao.updatePassword(username, password);
+    logger.debug("Updated user's password for "+ username);
+  }
 }

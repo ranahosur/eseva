@@ -18,13 +18,6 @@ public class RegistrationController {
   @Autowired
   public UserService userService;
 
-  @RequestMapping(value = "/register", method = RequestMethod.GET)
-  public ModelAndView showRegister(HttpServletRequest request, HttpServletResponse response) {
-    ModelAndView mav = new ModelAndView("register");
-    mav.addObject("user", new User());
-
-    return mav;
-  }
 
   @RequestMapping(value = "/registernew", method = RequestMethod.GET)
   public ModelAndView showRegisterNew(HttpServletRequest request, HttpServletResponse response) {
@@ -34,21 +27,29 @@ public class RegistrationController {
     return mav;
   }
 
-  @RequestMapping(value = "/registerProcess", method = RequestMethod.POST)
-  public ModelAndView addUser(HttpServletRequest request, HttpServletResponse response,
-      @ModelAttribute("user") User user) {
-
-    userService.register(user);
-
-    return new ModelAndView("welcome", "firstname", user.getFirstName());
+  @RequestMapping(value = "/welcome", method = RequestMethod.GET)
+  public ModelAndView showDashboardGet(HttpServletRequest request, HttpServletResponse response) {
+    ModelAndView mav = new ModelAndView("welcome");
+    User user = userService.findUser(request.getSession().getAttribute("username").toString());
+    mav.addObject("user", user);
+    return mav;
   }
+
+  @RequestMapping(value = "/welcome", method = RequestMethod.POST)
+  public ModelAndView showDashboardPost(HttpServletRequest request, HttpServletResponse response) {
+    ModelAndView mav = new ModelAndView("welcome");
+    User user = userService.findUser(request.getSession().getAttribute("username").toString());
+    mav.addObject("user", user);
+    return mav;
+  }
+
 
   @RequestMapping(value = "/registerProcessNew", method = RequestMethod.POST)
   public ModelAndView addUserNew(HttpServletRequest request, HttpServletResponse response,
                               @ModelAttribute("user") User user) {
 
     userService.register(user);
-
+    request.getSession().setAttribute("username",user.getUsername());
     return new ModelAndView("welcome", "firstname", user.getFirstName());
   }
 }
